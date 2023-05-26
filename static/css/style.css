@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  color-scheme: light dark;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+.container {
+  width: min(65ch, 100% - 4rem);
+  margin: auto;
+}
+
+a {
+  color: steelblue;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  padding: 1rem 0;
+}
+
+header nav {
+  display: flex;
+}
+header nav a {
+  padding-top: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}

@@ -1,0 +1,14 @@
+baseURL = 'http://example.org/'
+languageCode = 'en-us'
+title = 'MySite'
+minify = false
+
+[menu]
+[[menu.main]]
+  name = 'Home'
+  pageRef = '/'
+  weight = 10
+[[menu.main]]
+  name = 'Posts'
+  pageRef = '/posts'
+  weight = 20
