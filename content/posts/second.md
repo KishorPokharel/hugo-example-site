@@ -6,3 +6,5 @@ draft: true
 ---
 
 this is my second post
+
+{{< img src="hike.jpg" >}}
