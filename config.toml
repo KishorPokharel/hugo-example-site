@@ -1,4 +1,4 @@
-baseURL = 'https://kishorpokharel.github.io/hugo-example-site'
+baseURL = 'https://kishorpokharel.github.io/hugo-example-site/'
 languageCode = 'en-us'
 title = 'MySite'
 minify = true
@@ -6,9 +6,9 @@ minify = true
 [menu]
 [[menu.main]]
   name = 'Home'
-  pageRef = '/'
+  pageRef = ''
   weight = 10
 [[menu.main]]
   name = 'Posts'
-  pageRef = '/posts'
+  pageRef = 'posts'
   weight = 20

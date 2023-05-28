@@ -1,8 +1,9 @@
 <header>
-  <h2><a href="{{ .Site.BaseURL }}">MySite</a></h2>
+  {{ $baseurl := .Site.BaseURL }}
+  <h2><a href="{{ $baseurl }}">MySite</a></h2>
   <nav>
     {{ range .Site.Menus.main }}
-    <a href="{{ .PageRef }}">{{ .KeyName }}</a>
+    <a href="{{ $baseurl }}{{ .PageRef }}">{{ .KeyName }}</a>
     {{ end }}
   </nav>
 </header>
