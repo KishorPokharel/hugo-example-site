@@ -1,4 +1,4 @@
-baseURL = 'http://example.org/'
+baseURL = 'https://kishorpokharel.github.io/hugo-example-site'
 languageCode = 'en-us'
 title = 'MySite'
 minify = true
