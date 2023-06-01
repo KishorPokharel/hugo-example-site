@@ -1,15 +1,6 @@
 {{ define "main" }}
 <article>
   <h1>{{ .Title }}</h1>
-  <small>
-    {{ .ReadingTime }} 
-    {{ if eq .ReadingTime 1 }} minute {{ else }} minutes {{ end }}
-  </small>
-  <br>
-  Tags:
-  {{ range .Params.tags }}
-  <a href="/tags/{{ . }}">{{ . }}</a>
-  {{ end }}
   <div class="content">
     {{ .Content }}
   </div>

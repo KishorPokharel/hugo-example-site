@@ -12,3 +12,10 @@ minify = true
   name = 'Posts'
   pageRef = 'posts'
   weight = 20
+[[menu.main]]
+  name = 'Search'
+  pageRef = 'search'
+  weight = 30
+
+[outputs]
+	home = ["HTML","RSS","JSON"]

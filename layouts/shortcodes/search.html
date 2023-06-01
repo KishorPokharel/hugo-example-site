@@ -1,0 +1,41 @@
+{{ $baseurl := .Site.BaseURL }}
+
+<form id="searchForm">
+  <input type="text" id="searchInput" />
+  <input type="submit" />
+</form>
+
+<section id="searchResults"></section>
+
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+
+<script>
+  (async () => {
+    const searchForm = document.querySelector('#searchForm');
+    const searchInput = document.querySelector('#searchInput');
+    const searchResults = document.querySelector('#searchResults');
+
+    const url = '{{ $baseurl }}/index.json';
+    const response = await fetch(url);
+    const results = await response.json();
+    const options = {
+      includeScore: true,
+      keys: ['title', 'content'],
+    };
+    const fuse = new Fuse(results, options);
+
+    searchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      searchResults.innerHTML = '';
+      const results = fuse.search(searchInput.value);
+      results.forEach(result => {
+        const div = document.createElement('div');
+        const html = `
+    <h4><a href="${result.item.url}">${result.item.title}</a></h4>
+    <p>${result.item.summary}</p>`;
+        div.innerHTML = html;
+        searchResults.appendChild(div);
+      });
+    });
+  })();
+</script>
