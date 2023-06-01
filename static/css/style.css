@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font: inherit;
 }
 
 html {
@@ -48,4 +49,29 @@ header nav a {
   padding-top: 0;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
+}
+
+form input {
+  border-radius: 4px;
+  padding: 0.2rem 0.5rem;
+}
+
+form input[type='submit'] {
+  background-color: steelblue;
+  color: #fff;
+  border: transparent;
+}
+
+form input[type='text'] {
+  outline: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (prefers-color-scheme: light) {
+  header h2 a {
+    color: black;
+  }
+  form input[type='text'] {
+    border: 1px solid rgba(0, 0, 0, 0.3);
+  }
 }
