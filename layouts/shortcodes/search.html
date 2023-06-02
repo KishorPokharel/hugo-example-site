@@ -7,7 +7,7 @@
 
 <section id="searchResults"></section>
 
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2"></script>
+<script src="https://unpkg.com/lunr/lunr.js"></script>
 
 <script>
   (async () => {
@@ -17,22 +17,27 @@
 
     const url = '{{ $baseurl }}/index.json';
     const response = await fetch(url);
-    const results = await response.json();
-    const options = {
-      includeScore: true,
-      keys: ['title', 'content'],
-    };
-    const fuse = new Fuse(results, options);
+    const data = await response.json();
+    const idx = lunr(function() {
+      this.ref('url');
+      this.field('title');
+      this.field('content');
+
+      data.forEach(function(doc) {
+        this.add(doc);
+      }, this);
+    });
 
     searchForm.addEventListener('submit', e => {
       e.preventDefault();
       searchResults.innerHTML = '';
-      const results = fuse.search(searchInput.value);
+      const results = idx.search(searchInput.value);
       results.forEach(result => {
+        const {url, title, summary} = data.find(d => d.url == result.ref);
         const div = document.createElement('div');
         const html = `
-    <h4><a href="${result.item.url}">${result.item.title}</a></h4>
-    <p>${result.item.summary}</p>`;
+    <h4><a href="${url}">${title}</a></h4>
+    <p>${summary}</p>`;
         div.innerHTML = html;
         searchResults.appendChild(div);
       });
